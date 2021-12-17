@@ -1,27 +1,23 @@
 package com.api.produtos.categoria.controller;
 
-import com.api.produtos.categoria.domain.Categoria;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.api.produtos.categoria.domain.Category;
+import com.api.produtos.categoria.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/categorias")
-public class CategoriaController {
+@RequestMapping("/categories")
+public class CategoryController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Categoria> listar(){
+    @Autowired
+    private CategoryService categoryService;
 
-        Categoria cat1 = new Categoria(1, "i");
-        Categoria cat2 = new Categoria(2, "drogas");
-
-        List<Categoria> lista = new ArrayList();
-        lista.add(cat1);
-        lista.add(cat2);
-
-        return lista;
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Category>> find(@PathVariable  Integer id){
+            Optional<Category> categoryFind = categoryService.search(id);
+            return ResponseEntity.ok().body(categoryFind);
     }
 }
