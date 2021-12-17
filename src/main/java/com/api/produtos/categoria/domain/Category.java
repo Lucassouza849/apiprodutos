@@ -18,24 +18,24 @@ import java.util.Objects;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Categoria implements Serializable {
+public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    private String name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(id, categoria.id) && Objects.equals(nome, categoria.nome);
+        Category categoria = (Category) o;
+        return Objects.equals(id, categoria.id) && Objects.equals(name, categoria.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome);
+        return Objects.hash(id, name);
     }
 }
