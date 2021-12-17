@@ -1,6 +1,6 @@
-package com.api.produtos.categoria.repository;
+package com.api.produtos.category.repository;
 
-import com.api.produtos.categoria.domain.Category;
+import com.api.produtos.category.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
