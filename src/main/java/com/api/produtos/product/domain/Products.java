@@ -1,11 +1,9 @@
-package com.api.produtos.products.domain;
+package com.api.produtos.product.domain;
 
 
 import com.api.produtos.category.domain.Category;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
