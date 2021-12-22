@@ -17,8 +17,6 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Products implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +33,12 @@ public class Products implements Serializable {
 
     @JsonBackReference
     private List<Category> category = new ArrayList<>();
+
+    public Products(Integer id, String name, Double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     @Override
     public boolean equals(Object o) {

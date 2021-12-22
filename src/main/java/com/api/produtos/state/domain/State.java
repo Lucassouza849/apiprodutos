@@ -1,11 +1,7 @@
-package com.api.produtos.category.domain;
+package com.api.produtos.state.domain;
 
-
-import com.api.produtos.products.domain.Products;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
+import com.api.produtos.city.domain.City;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -17,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-public class Category implements Serializable {
+public class State implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,11 +21,12 @@ public class Category implements Serializable {
     private Integer id;
     private String name;
 
-    @JsonManagedReference
-    @ManyToMany(mappedBy = "category")
-    private List<Products> products = new ArrayList();
+    @OneToMany(mappedBy = "state")
+    private List<City> city = new ArrayList<>();
 
-    public Category(Integer id, String name) {
+    public State(){}
+
+    public State(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -38,12 +35,12 @@ public class Category implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category categoria = (Category) o;
-        return Objects.equals(id, categoria.id) && Objects.equals(name, categoria.name);
+        State state = (State) o;
+        return Objects.equals(id, state.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id);
     }
 }
