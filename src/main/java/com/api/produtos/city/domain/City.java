@@ -1,6 +1,7 @@
 package com.api.produtos.city.domain;
 
 import com.api.produtos.state.domain.State;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class City implements Serializable {
     private Integer id;
     private String name;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "estado_id")
     private State state;

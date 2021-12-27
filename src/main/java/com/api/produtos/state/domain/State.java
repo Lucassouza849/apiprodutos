@@ -1,6 +1,7 @@
 package com.api.produtos.state.domain;
 
 import com.api.produtos.city.domain.City;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class State implements Serializable {
     private Integer id;
     private String name;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "state")
     private List<City> city = new ArrayList<>();
 

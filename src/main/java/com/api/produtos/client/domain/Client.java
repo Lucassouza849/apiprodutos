@@ -2,6 +2,7 @@ package com.api.produtos.client.domain;
 
 import com.api.produtos.client.domain.enums.TypeClient;
 import com.api.produtos.address.domain.Address;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class Client implements Serializable {
     private String cpfOrCnpj;
     private Integer type;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "client")
     private List<Address> address = new ArrayList<>();
 

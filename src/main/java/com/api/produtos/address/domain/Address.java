@@ -2,6 +2,7 @@ package com.api.produtos.address.domain;
 
 import com.api.produtos.city.domain.City;
 import com.api.produtos.client.domain.Client;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,7 @@ public class Address implements Serializable {
     private String bairro;
     private String cep;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Client client;
